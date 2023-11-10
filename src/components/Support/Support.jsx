@@ -2,19 +2,25 @@
 // Imports
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 
 function Support() {
 
     // Variables
     const [supportRate, setSupportRate] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
+
 
     // function to continue
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('supportRate', supportRate);
 
-    // ? write your dispatch here
+    // dispatch
+        const action = { type: 'SUPPORT_RATE', payload: supportRate }
+        dispatch(action);
 
     // send to Comments
         history.push('/comments');

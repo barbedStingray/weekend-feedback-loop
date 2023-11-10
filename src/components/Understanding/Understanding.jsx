@@ -2,15 +2,15 @@
 // Imports
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
 
 
 function Understanding() {
 
-
     // Variables
     const [underRate, setUnderRate] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
 
 
     // function to continue
@@ -18,7 +18,9 @@ function Understanding() {
         e.preventDefault();
         console.log(`underRate`, underRate);
 
-    // ? write your dispatch here
+    // dispatch
+        const action = { type: 'UNDERSTAND_RATE', payload: underRate }
+        dispatch(action);
 
     // send to support
         history.push('/support');
