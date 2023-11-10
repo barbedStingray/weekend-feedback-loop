@@ -14,9 +14,40 @@ import logger from 'redux-logger';
 
 // Feeling Reducer
 
-const feelingRate = (state = 'Test 123', action) => {
+const feelingRate = (state = 'feeling...', action) => {
     if(action.type === 'FEELING_RATE') {
         // pass the new variable here.
+        return action.payload;
+    }
+    return state;
+}
+
+
+
+// understanding reducer
+
+const understandRate = (state = 'understanding...', action) => {
+    if(action.type === 'UNDERSTAND_RATE') {
+        return action.payload;
+    }
+    return state;
+}
+
+
+
+// support reducer
+
+const supportRate = (state = 'supporting...', action) => {
+    if(action.type === 'SUPPORT_RATE') {
+        return action.payload;
+    }
+    return state;
+}
+
+// comment reducer
+
+const commentInput = (state = 'commenting...', action) => {
+    if(action.type === 'COMMENT_INPUT') {
         return action.payload;
     }
     return state;
@@ -30,7 +61,10 @@ const feelingRate = (state = 'Test 123', action) => {
 const reduxStore = createStore(
     combineReducers({
         // *** your reducers go here
-        feelingRate
+        feelingRate,
+        understandRate,
+        supportRate,
+        commentInput
     }),
     applyMiddleware(logger)
 );
