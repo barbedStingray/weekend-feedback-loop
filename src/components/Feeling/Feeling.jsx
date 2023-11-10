@@ -2,23 +2,27 @@
 // Imports
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+
 
 function Feeling() {
 
     // Variables
     const history = useHistory();
     const [feelingRate, setFeelingRate] = useState('');
+    const dispatch = useDispatch();
 
 
-
-
-    // function for Continue/Submit button
+    // dispatch - continue button
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(`feelingRate:`, feelingRate);
+        
+    // dispatch
+        const action = { type: 'FEELING_RATE', payload: feelingRate }
+        dispatch(action);
     
-    // ? write your dispatch here
-
     // send to understanding
         history.push('/understanding');
 
