@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const reviewRouter = require('./Routes/review.router.js');
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); 

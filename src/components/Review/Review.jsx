@@ -2,6 +2,7 @@
 // Imports
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 function Review() {
@@ -17,8 +18,21 @@ function Review() {
     function completeForm() {
         console.log('form complete!');
 
+    // POST 
+        axios.post('/review', {
+            feeling: feelingRate,
+            understanding: understandRate,
+            support: supportRate,
+            comments: commentInput
+        }).then((response) => {
+            console.log(`POST /review success`);
+
         // send to SubmitSuccess
-        history.push('/success');
+            history.push('/success');
+        }).catch((error) => {
+            console.log(`post /review error`);
+            alert(`post /review error`);
+        });
     }
 
     // send to comments
@@ -36,12 +50,12 @@ function Review() {
             <p>Comment: {commentInput}</p>
 
 
-            <button 
+            <button
                 onClick={completeForm}
                 id="continue-btn"
             >Complete!</button>
 
-            <button 
+            <button
                 onClick={goBackAPage}
                 id="continue-btn"
             >Go Back</button>
