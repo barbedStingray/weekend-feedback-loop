@@ -4,12 +4,17 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+// components
+import RadioButton from '../RadioButton/RadioButton.jsx';
+
 
 function Support() {
 
     // Variables
     const [weaponOutfit, setWeaponOutfit] = useState('');
     const [vehicleUse, setVehicleUse] = useState(false);
+    const [weaponCondition, setWeaponCondition] = useState('');
+    const [armorCondition, setArmorCondition] = useState('');
 
 
     const history = useHistory();
@@ -22,7 +27,9 @@ function Support() {
         console.log('supportRate', weaponOutfit);
 
     // dispatch
-        const action = { type: 'SUPPORT_RATE', payload: weaponOutfit }
+        const action = { 
+            type: 'SUPPORT_RATE', 
+            payload: { weaponOutfit, weaponCondition, armorCondition }}
         dispatch(action);
 
     // send to Comments
@@ -33,6 +40,14 @@ function Support() {
     const goBackAPage = () => {
         history.push('/starSystems');
     }
+
+
+// parts to add
+// vehicle type**
+// vehicle condition**
+
+
+
 
     return (
         <div id="support-div">
@@ -48,20 +63,30 @@ function Support() {
 
                 {weaponOutfit}
 
-                <h4>Did you use a vehicle?</h4>
-                <label><input
-                    type='radio'
-                    value={true}
-                    onChange={(e) => setVehicleUse(e.target.value)}
-                    name="vehicle-use"
-                ></input>Yes</label>
+
+                <h4>What is the Condition of your Weapon</h4>
+
+                <RadioButton value='Old and Busted' name="weapon-condition" status={setWeaponCondition}/>    
+                <RadioButton value='Needs Adjustments' name="weapon-condition" status={setWeaponCondition}/>    
+                <RadioButton value='Kinda Works' name="weapon-condition" status={setWeaponCondition}/>    
+                <RadioButton value='Battle Tested' name="weapon-condition" status={setWeaponCondition}/>    
+                <RadioButton value='Brand New' name="weapon-condition" status={setWeaponCondition}/>    
                 
-                <label><input
-                    type='radio'
-                    value={false}
-                    onChange={(e) => setVehicleUse(e.target.value)}
-                    name="vehicle-use"
-                ></input>No</label>
+                {weaponCondition}
+
+                <h4>What is the Condition of your Armor</h4>
+                <RadioButton value='Im wearing Rags' name="armor-condition" status={setArmorCondition}/>    
+                <RadioButton value='Plenty of Holes' name="armor-condition" status={setArmorCondition}/>    
+                <RadioButton value='Rough around the edges' name="armor-condition" status={setArmorCondition}/>    
+                <RadioButton value='Worn but Protective' name="armor-condition" status={setArmorCondition}/>    
+                <RadioButton value='Shiny and New' name="armor-condition" status={setArmorCondition}/>    
+
+                {armorCondition}
+
+                <h4>Did you use a vehicle?</h4>
+
+                <RadioButton value={'Yes'} name="vehicle-use" status={setVehicleUse} />
+                <RadioButton value={'No'} name="vehicle-use" status={setVehicleUse} />
 
                 {vehicleUse}
 

@@ -4,6 +4,8 @@ import './App.css';
 
 // Hash Router
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 
 // Import Sections
@@ -17,7 +19,29 @@ import Review from '../Review/Review.jsx';
 import SubmitSuccess from '../SubmitSuccess/SubmitSuccess.jsx';
 
 
+
 function App() {
+
+  const dispatch = useDispatch();
+
+  // fetch the star systems
+
+  const fetchStarSystems = () => {
+    console.log(`fetching star system list`);
+
+    axios.get('/fetch').then((response) => {
+      console.log(`fetch StarSystems Body:`, response.data );
+
+      let action = { type: 'SET_STAR_SYSTEM_LIST', payload: response.data }
+      dispatch(action);
+
+    });
+  }
+  useEffect(() => {
+    fetchStarSystems();
+  }, []);
+
+
 
   // form variables
 

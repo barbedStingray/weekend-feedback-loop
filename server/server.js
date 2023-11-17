@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const reviewRouter = require('./Routes/review.router.js');
+const fetchRouter = require('./Routes/fetch.router.js');
 const PORT = process.env.PORT || 5001;
 
 /** ---------- MIDDLEWARE ---------- **/
@@ -11,6 +12,7 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 app.use('/review', reviewRouter);
+app.use('/fetch', fetchRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

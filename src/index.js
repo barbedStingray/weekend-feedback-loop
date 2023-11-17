@@ -24,10 +24,18 @@ const trooperID = (state = {}, action) => {
 
 
 
-// * starSystems reducer
+// * starSystems data reducer
 
 const starSystems = (state = {}, action) => {
-    if(action.type === 'SET_STAR_SYSTEM') {
+    if(action.type === 'DATA_STAR_SYSTEM') {
+        return action.payload;
+    }
+    return state;
+}
+
+// ? starsystems list reducer
+const starSystemList = (state = [], action) => {
+    if(action.type === 'SET_STAR_SYSTEM_LIST') {
         return action.payload;
     }
     return state;
@@ -70,6 +78,7 @@ const comments = (state = '', action) => {
 const reduxStore = createStore(
     combineReducers({
         // *** your reducers go here
+        starSystemList,
         trooperID,
         starSystems,
         resources,

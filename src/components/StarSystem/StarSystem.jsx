@@ -2,7 +2,9 @@
 // Imports
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+// components
 
 
 function Understanding() {
@@ -11,8 +13,10 @@ function Understanding() {
     const dispatch = useDispatch();
 
     // Variables
+    const starSystemList = useSelector(store => store.starSystemList);
     const [starSystem, setStarSystem] = useState('');
     const [baseLocation, setBaseLocation] = useState('');
+
 
 
 
@@ -21,7 +25,7 @@ function Understanding() {
         e.preventDefault();
 
         dispatch({
-            type: 'SET_STAR_SYSTEM',
+            type: 'DATA_STAR_SYSTEM',
             payload: { starSystem, baseLocation }
         });
 
@@ -48,9 +52,15 @@ function Understanding() {
                     <option value="endor">Endor</option>
                     <option value="tatooine">Tatooine</option>
                 </select>
+
+                {starSystemList.map((planet) => 
+                <p key={planet.id}>{planet.system}</p>)}
+
                 {starSystem}
 
                 <h4>Please Select Your Base of Operations</h4>
+
+
                 <label><input
                     type='radio'
                     value="Imperial Base"
@@ -83,6 +93,8 @@ function Understanding() {
                 id="continue-btn"
                 onClick={goBackAPage}
             >Go Back</button>
+
+            {JSON.stringify(starSystemList)}
 
         </div>
     )
