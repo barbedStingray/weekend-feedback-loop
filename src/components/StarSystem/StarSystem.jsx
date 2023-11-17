@@ -51,27 +51,27 @@ function Understanding() {
                 {starSystem}
 
                 <h4>Please Select Your Base of Operations</h4>
-                <input
+                <label><input
                     type='radio'
                     value="Imperial Base"
                     onChange={(e) => setBaseLocation(e.target.value)}
                     name="base-location"
-                ></input>
-                Imperial Base
-                <input
+                ></input>Imperial Base</label>
+                
+                <label><input
                     type='radio'
                     value="Imperial Spaceport"
                     onChange={(e) => setBaseLocation(e.target.value)}
                     name="base-location"
-                ></input>
-                Imperial Base
-                <input
+                ></input>Imperial Spaceport</label>
+                
+                <label><input
                     type='radio'
                     value="Forest Outpost"
                     onChange={(e) => setBaseLocation(e.target.value)}
                     name="base-location"
-                ></input>
-                Imperial Base
+                ></input>Forest Outpost</label>
+                 
 
                 {baseLocation}
 

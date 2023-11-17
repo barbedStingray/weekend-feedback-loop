@@ -4,7 +4,6 @@ import './App.css';
 
 // Hash Router
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { useState } from 'react';
 
 
 // Import Sections
@@ -21,9 +20,6 @@ import SubmitSuccess from '../SubmitSuccess/SubmitSuccess.jsx';
 function App() {
 
   // form variables
-  const [trooperID, setTrooperID] = useState('');
-  const [squadron, setSquadron] = useState('');
-  const [unitNumber, setUnitNumber] = useState('');
 
 
   return (
@@ -35,13 +31,9 @@ function App() {
           <h4>Don't forget it!</h4>
         </header>
 
-        {/* <Route exact path="/">
-          <BeginForm 
-            trooperID={trooperID} setTrooperID={setTrooperID}
-            squadron={squadron} setSquadron={setSquadron}
-            unitNumber={unitNumber} setUnitNumber={setUnitNumber}
-          />
-        </Route> */}
+        <Route exact path="/">
+          <BeginForm />
+        </Route>
 
         <Route exact path="/trooperID" >
           <TrooperID />

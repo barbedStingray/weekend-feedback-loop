@@ -9,10 +9,8 @@ function Review() {
 
     // Variables
     const history = useHistory();
-    const feelingRate = useSelector(store => store.feelingRate);
-    const understandRate = useSelector(store => store.understandRate);
-    const supportRate = useSelector(store => store.supportRate);
-    const commentInput = useSelector(store => store.commentInput);
+    const trooperID = useSelector(store => store.trooperID);
+    const starSystems = useSelector(store => store.starSystems);
 
     // ? Complete and Submit your info to the server
     function completeForm() {
@@ -20,10 +18,9 @@ function Review() {
 
     // POST 
         axios.post('/review', {
-            feeling: feelingRate,
-            understanding: understandRate,
-            support: supportRate,
-            comments: commentInput
+
+            // todo pass your object here
+
         }).then((response) => {
             console.log(`POST /review success`);
 
@@ -44,10 +41,13 @@ function Review() {
         <div id="review-div">
             <p>Let's review your sadness</p>
 
-            <p>Feeling Rating: {feelingRate}</p>
-            <p>Understood Rating: {understandRate}</p>
-            <p>Support Rating: {supportRate}</p>
-            <p>Comment: {commentInput}</p>
+            <p>Identification Number: {trooperID.trooperID}</p>
+            <p>Squadron: {trooperID.squadron}</p>
+            <p>Unit#: {trooperID.unitNumber}</p>
+
+            {/* StarSystem */}
+            <p>Star System: {starSystems.starSystem}</p>
+            <p>Base Location: {starSystems.baseLocation}</p>
 
 
             <button

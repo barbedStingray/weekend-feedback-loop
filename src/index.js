@@ -12,9 +12,9 @@ import logger from 'redux-logger';
 
 // *** REDUCERS ***
 
-// ? trooperID Reducer
+// * trooperID Reducer
 
-const trooperID = (state = 'feeling...', action) => {
+const trooperID = (state = {}, action) => {
     if(action.type === 'SET_TROOPERID') {
         // pass the new variable here.
         return action.payload;

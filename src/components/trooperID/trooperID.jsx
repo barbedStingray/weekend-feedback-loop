@@ -1,7 +1,19 @@
 
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
-function Feeling(props) {
+
+function Feeling() {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const [trooperID, setTrooperID] = useState('');
+    const [squadron, setSquadron] = useState('');
+    const [unitNumber, setUnitNumber] = useState('');
+
 
 
     // dispatch - continue button
@@ -9,15 +21,13 @@ function Feeling(props) {
         e.preventDefault();
         
     // dispatch
-        const action = { type: 'FEELING_RATE', payload: props.trooperID }
-        // dispatch(action);
+        const action = { type: 'SET_TROOPERID', payload: {trooperID, squadron, unitNumber} }
+        dispatch(action);
     
     // send to understanding
         history.push('/starSystems');
 
     }
-
-
 
 
     return (
@@ -29,28 +39,28 @@ function Feeling(props) {
                     type="text" 
                     placeholder="FN-2187" 
                     required
-                    value={props.trooperID}
-                    onChange={(e) => props.setTrooperID(e.target.value)}
+                    value={trooperID}
+                    onChange={(e) => setTrooperID(e.target.value)}
                 />
-                {props.trooperID}
+                {trooperID}
 
                 <input 
                     type="text" 
                     placeholder="Storm trooper" 
                     required
-                    value={props.squadron}
-                    onChange={(e) => props.setSquadron(e.target.value)}
+                    value={squadron}
+                    onChange={(e) => setSquadron(e.target.value)}
                 />
-                {props.squadron}
+                {squadron}
 
                 <input 
                     type="number" 
                     placeholder="Unit #" 
                     required
-                    value={props.unitNumber}
-                    onChange={(e) => props.setUnitNumber(e.target.value)}
+                    value={unitNumber}
+                    onChange={(e) => setUnitNumber(e.target.value)}
                 />
-                {props.unitNumber}
+                {unitNumber}
 
                 <button 
                     type="submit" 
