@@ -6,33 +6,33 @@ import { useDispatch } from 'react-redux';
 
 function Comments() {
 
-    // Variables
-    const [commentInput, setCommentInput] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
 
-    // Continue button
+    // Variables
+    const [commentInput, setCommentInput] = useState('');
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('comments:', commentInput);
 
-        // dispatch
-        const action = { type: 'COMMENT_INPUT', payload: commentInput }
-        dispatch(action);
+        dispatch({
+            type: 'SET_COMMENTS',
+            payload: commentInput
+        });
 
-        // send to Review
         history.push('/review');
     }
 
     // send to Support
     const goBackAPage = () => {
-        history.push('/support');
+        history.push('/encounters');
     }
 
     return (
         <div id="comment-div">
-            <h3>Cry about it</h3>
+            <h3>Anything else to Report?</h3>
             <form onSubmit={handleSubmit}>
                 <textarea
                     type="text"
@@ -48,7 +48,7 @@ function Comments() {
                 id="continue-btn"
                 onClick={goBackAPage}
             >Go Back</button>
-            
+
         </div>
     )
 }

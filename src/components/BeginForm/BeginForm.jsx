@@ -9,7 +9,7 @@ function BeginForm() {
     function beginFeedback() {
         console.log('feedback starting...');
 
-        history.push('/feelings');
+        history.push('/trooperID');
     }
 
 

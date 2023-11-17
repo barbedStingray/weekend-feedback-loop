@@ -12,10 +12,10 @@ import logger from 'redux-logger';
 
 // *** REDUCERS ***
 
-// Feeling Reducer
+// ? trooperID Reducer
 
-const feelingRate = (state = 'feeling...', action) => {
-    if(action.type === 'FEELING_RATE') {
+const trooperID = (state = 'feeling...', action) => {
+    if(action.type === 'SET_TROOPERID') {
         // pass the new variable here.
         return action.payload;
     }
@@ -24,10 +24,10 @@ const feelingRate = (state = 'feeling...', action) => {
 
 
 
-// understanding reducer
+// * starSystems reducer
 
-const understandRate = (state = 'understanding...', action) => {
-    if(action.type === 'UNDERSTAND_RATE') {
+const starSystems = (state = {}, action) => {
+    if(action.type === 'SET_STAR_SYSTEM') {
         return action.payload;
     }
     return state;
@@ -35,19 +35,28 @@ const understandRate = (state = 'understanding...', action) => {
 
 
 
-// support reducer
+// ? resources reducer
 
-const supportRate = (state = 'supporting...', action) => {
-    if(action.type === 'SUPPORT_RATE') {
+const resources = (state = 'supporting...', action) => {
+    if(action.type === 'SET_RESOURCES') {
         return action.payload;
     }
     return state;
 }
 
-// comment reducer
+// ? encounters reducer
 
-const commentInput = (state = 'commenting...', action) => {
-    if(action.type === 'COMMENT_INPUT') {
+const encounters = (state = 'commenting...', action) => {
+    if(action.type === 'SET_ENCOUNTERS') {
+        return action.payload;
+    }
+    return state;
+}
+
+// * comments reducer
+
+const comments = (state = '', action) => {
+    if(action.type === 'SET_COMMENTS') {
         return action.payload;
     }
     return state;
@@ -61,10 +70,11 @@ const commentInput = (state = 'commenting...', action) => {
 const reduxStore = createStore(
     combineReducers({
         // *** your reducers go here
-        feelingRate,
-        understandRate,
-        supportRate,
-        commentInput
+        trooperID,
+        starSystems,
+        resources,
+        encounters,
+        comments
     }),
     applyMiddleware(logger)
 );
