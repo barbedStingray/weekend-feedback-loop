@@ -20,7 +20,7 @@ function Review() {
     function completeForm() {
         console.log('form complete!');
 
-    // POST 
+        // POST 
         axios.post('/review', {
 
             // todo pass your object here
@@ -28,7 +28,7 @@ function Review() {
         }).then((response) => {
             console.log(`POST /review success`);
 
-        // send to SubmitSuccess
+            // send to SubmitSuccess
             history.push('/success');
         }).catch((error) => {
             console.log(`post /review error`);
@@ -43,40 +43,64 @@ function Review() {
 
     return (
         <div id="review-div">
-            <p>Let's review your sadness</p>
 
-        {/* Trooper ID */}
-            <p>Identification Number: {trooperID.trooperID}</p>
-            <p>Squadron: {trooperID.squadron}</p>
-            <p>Unit#: {trooperID.unitNumber}</p>
-
-        {/* StarSystem */}
-            <p>Star System: {starSystems.starSystem}</p>
-            <p>Base Location: {starSystems.baseLocation}</p>
-
-        {/* Resources */}
-            <p>Weapon Type: {resources.weaponOutfit}</p>
-            <p>Weapon Condition: {resources.weaponCondition}</p>
-            <p>Armor Condition: {resources.armorCondition}</p>
-
-        {/* Encounters */}
-            <p>Encounters:</p>
-            {encounters.map((event) => 
-            <p>{event}</p>)}
-
-        {/* Comments */}
-            <p>Report Notes: {comments}</p>
+            <div id="finish-btn">
+                <button
+                    onClick={completeForm}
+                    id="complete-btn"
+                >Complete</button>
+            </div>
 
 
-            <button
-                onClick={completeForm}
-                id="continue-btn"
-            >Complete!</button>
+            <h3 className="last">Report Overview</h3>
 
-            <button
+            <h5 className="nextLast">Trooper ID</h5>
+
+            <div id="troop-review" >
+                {/* Trooper ID */}
+                <p>{trooperID.trooperID}</p>
+                <p>{trooperID.squadron}</p>
+                <p>{trooperID.unitNumber}</p>
+            </div>
+
+            <h5>Star System</h5>
+
+            <div id="star-review">
+                {/* StarSystem */}
+                <p>{starSystems.starSystem}</p>
+                <p>{starSystems.baseLocation}</p>
+            </div>
+
+            <h5>Resources</h5>
+
+            <div id="resource-review">
+                {/* Resources */}
+                <p>{resources.weaponOutfit}</p>
+                <p>Weapon: {resources.weaponCondition}</p>
+                <p>Armor: {resources.armorCondition}</p>
+            </div>
+
+            <h5>Encounters</h5>
+
+            <div id="encounter-review">
+                {/* Encounters */}
+                {encounters.map((event) =>
+                    <p>{event}</p>)}
+            </div>
+
+            <h5>Report Notes:</h5>
+
+            {/* Comments */}
+            <p id="comment-review">{comments}</p>
+
+
+
+            {/* <button
                 onClick={goBackAPage}
                 id="continue-btn"
-            >Go Back</button>
+            >Go Back</button> */}
+
+
 
         </div>
     )
