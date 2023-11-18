@@ -9,8 +9,12 @@ function Review() {
 
     // Variables
     const history = useHistory();
+
     const trooperID = useSelector(store => store.trooperID);
     const starSystems = useSelector(store => store.starSystems);
+    const resources = useSelector(store => store.resources);
+    const encounters = useSelector(store => store.encounters);
+    const comments = useSelector(store => store.comments);
 
     // ? Complete and Submit your info to the server
     function completeForm() {
@@ -41,13 +45,27 @@ function Review() {
         <div id="review-div">
             <p>Let's review your sadness</p>
 
+        {/* Trooper ID */}
             <p>Identification Number: {trooperID.trooperID}</p>
             <p>Squadron: {trooperID.squadron}</p>
             <p>Unit#: {trooperID.unitNumber}</p>
 
-            {/* StarSystem */}
+        {/* StarSystem */}
             <p>Star System: {starSystems.starSystem}</p>
             <p>Base Location: {starSystems.baseLocation}</p>
+
+        {/* Resources */}
+            <p>Weapon Type: {resources.weaponOutfit}</p>
+            <p>Weapon Condition: {resources.weaponCondition}</p>
+            <p>Armor Condition: {resources.armorCondition}</p>
+
+        {/* Encounters */}
+            <p>Encounters:</p>
+            {encounters.map((event) => 
+            <p>{event}</p>)}
+
+        {/* Comments */}
+            <p>Report Notes: {comments}</p>
 
 
             <button

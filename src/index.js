@@ -12,7 +12,7 @@ import logger from 'redux-logger';
 
 // *** REDUCERS ***
 
-// ? trooperID Reducer
+// * trooperID Reducer
 
 const trooperID = (state = {}, action) => {
     if(action.type === 'SET_TROOPERID') {
@@ -24,7 +24,7 @@ const trooperID = (state = {}, action) => {
 
 
 
-// ? starSystems data reducer
+// * starSystems data reducer
 
 const starSystems = (state = {}, action) => {
     if(action.type === 'DATA_STAR_SYSTEM') {
@@ -43,18 +43,18 @@ const starSystemList = (state = [], action) => {
 
 
 
-// ? resources reducer
+// * resources reducer
 
-const resources = (state = 'supporting...', action) => {
+const resources = (state = {}, action) => {
     if(action.type === 'SET_RESOURCES') {
         return action.payload;
     }
     return state;
 }
 
-// ? encounters reducer
+// * encounters reducer
 
-const encounters = (state = 'commenting...', action) => {
+const encounters = (state = [], action) => {
     if(action.type === 'SET_ENCOUNTERS') {
         return action.payload;
     }

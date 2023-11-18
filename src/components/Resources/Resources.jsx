@@ -27,7 +27,7 @@ function Support() {
 
         // dispatch
         const action = {
-            type: 'SUPPORT_RATE',
+            type: 'SET_RESOURCES',
             payload: { weaponOutfit, weaponCondition, armorCondition }
         }
         dispatch(action);

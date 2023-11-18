@@ -32,16 +32,22 @@ function Comments() {
 
     return (
         <div id="comment-div">
-            <h3>Anything else to Report?</h3>
+            <h3>Report Notes</h3>
             <form onSubmit={handleSubmit}>
                 <textarea
                     type="text"
-                    placeholder="Your feelings here..."
+                    placeholder="Did you shoot anything...?"
                     value={commentInput}
                     onChange={(e) => setCommentInput(e.target.value)}
                 ></textarea>
                 {commentInput}
-                <button id="continue-btn">Continue</button>
+
+                <div id="next-btn">
+                        <button
+                            type="submit"
+                            id="continue-btn"
+                        >Continue</button>
+                    </div>
             </form>
 
             <button
