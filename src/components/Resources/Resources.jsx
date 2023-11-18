@@ -12,7 +12,6 @@ function Support() {
 
     // Variables
     const [weaponOutfit, setWeaponOutfit] = useState('');
-    const [vehicleUse, setVehicleUse] = useState(false);
     const [weaponCondition, setWeaponCondition] = useState('');
     const [armorCondition, setArmorCondition] = useState('');
 
@@ -26,13 +25,14 @@ function Support() {
         e.preventDefault();
         console.log('supportRate', weaponOutfit);
 
-    // dispatch
-        const action = { 
-            type: 'SUPPORT_RATE', 
-            payload: { weaponOutfit, weaponCondition, armorCondition }}
+        // dispatch
+        const action = {
+            type: 'SUPPORT_RATE',
+            payload: { weaponOutfit, weaponCondition, armorCondition }
+        }
         dispatch(action);
 
-    // send to Comments
+        // send to Comments
         history.push('/encounters');
     }
 
@@ -42,62 +42,62 @@ function Support() {
     }
 
 
-// parts to add
-// vehicle type**
-// vehicle condition**
-
-
-
-
     return (
-        <div id="support-div">
-            <h3>How can we Support you?</h3>
-            <form onSubmit={handleSubmit}>
+        <div id="page-div">
+            <div id="support-div">
+                <form onSubmit={handleSubmit}>
 
-                <select
-                    onChange={(e) => setWeaponOutfit(e.target.value)}
-                >
-                    <option value="" >Choose One</option>
-                    <option value="E-11 Blaster Rifle" >E-11 Blaster Rifle</option>
-                </select>
+                <h3>Weapon Type and Condition</h3>
 
-                {weaponOutfit}
+                    <div>
+                        <select
+                            onChange={(e) => setWeaponOutfit(e.target.value)}
+                        >
+                            <option value="" >Your Weapon</option>
+                            <option value="E-11 Blaster Rifle" >E-11 Blaster Rifle</option>
+                        </select>
+
+                        {weaponOutfit}
+
+                    </div>
+
+                    <div id="weapon-field" className="fadedDiv">
+                        <RadioButton value='1' name="weapon-condition" status={setWeaponCondition} />
+                        <RadioButton value='2' name="weapon-condition" status={setWeaponCondition} />
+                        <RadioButton value='3' name="weapon-condition" status={setWeaponCondition} />
+                        <RadioButton value='4' name="weapon-condition" status={setWeaponCondition} />
+                        <RadioButton value='5' name="weapon-condition" status={setWeaponCondition} />
+
+                        {weaponCondition}
+
+                    </div>
+
+                    <h3>Armor Condition</h3>
+
+                    <div id="armor-field" className="fadedDiv">
+                        <RadioButton value='1' name="armor-condition" status={setArmorCondition} />
+                        <RadioButton value='2' name="armor-condition" status={setArmorCondition} />
+                        <RadioButton value='3' name="armor-condition" status={setArmorCondition} />
+                        <RadioButton value='4' name="armor-condition" status={setArmorCondition} />
+                        <RadioButton value='5' name="armor-condition" status={setArmorCondition} />
+                        {armorCondition}
+                    </div>
 
 
-                <h4>What is the Condition of your Weapon</h4>
+                    <div id="next-btn">
+                        <button
+                            type="submit"
+                            id="continue-btn"
+                        >Continue</button>
+                    </div>
+                </form>
 
-                <RadioButton value='Old and Busted' name="weapon-condition" status={setWeaponCondition}/>    
-                <RadioButton value='Needs Adjustments' name="weapon-condition" status={setWeaponCondition}/>    
-                <RadioButton value='Kinda Works' name="weapon-condition" status={setWeaponCondition}/>    
-                <RadioButton value='Battle Tested' name="weapon-condition" status={setWeaponCondition}/>    
-                <RadioButton value='Brand New' name="weapon-condition" status={setWeaponCondition}/>    
-                
-                {weaponCondition}
-
-                <h4>What is the Condition of your Armor</h4>
-                <RadioButton value='Im wearing Rags' name="armor-condition" status={setArmorCondition}/>    
-                <RadioButton value='Plenty of Holes' name="armor-condition" status={setArmorCondition}/>    
-                <RadioButton value='Rough around the edges' name="armor-condition" status={setArmorCondition}/>    
-                <RadioButton value='Worn but Protective' name="armor-condition" status={setArmorCondition}/>    
-                <RadioButton value='Shiny and New' name="armor-condition" status={setArmorCondition}/>    
-
-                {armorCondition}
-
-                <h4>Did you use a vehicle?</h4>
-
-                <RadioButton value={'Yes'} name="vehicle-use" status={setVehicleUse} />
-                <RadioButton value={'No'} name="vehicle-use" status={setVehicleUse} />
-
-                {vehicleUse}
-
-                <button id="continue-btn">Continue</button>
-            </form>
-
-                <button 
+                {/* <button
                     id="continue-btn"
                     onClick={goBackAPage}
-                >Go Back</button>
+                >Go Back</button> */}
 
+            </div>
         </div>
     )
 }

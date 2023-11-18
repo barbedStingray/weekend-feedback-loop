@@ -31,13 +31,12 @@ h2 {
   font-size: 32px;
   color: #e8d089;
   margin: -1% 0% 2% 12%;
-
+  text-decoration: underline;
 }
 
 h3 {
   color: #bebebe;
-  margin: 5% 0%;
-  text-decoration: underline;
+  margin: 10% 0%;
 }
 
 #next-btn {
@@ -63,7 +62,7 @@ select {
   font-size: 1rem;
   width: 70%;
   display: flex;
-  margin-bottom: 30%;
+  margin-bottom: 20%;
 }
 
 #filler-div {
@@ -97,11 +96,15 @@ input, textarea {
   /* border: 2px solid yellow; */
   background-color: #005eff33;
   border-radius: 25px;
+  border: 1px solid #e8d089;
 }
 
 #base-div {
   background-color: #005eff33;
   border-radius: 10px;
+  color: #e8d089;
+  border: 1px solid #e8d089;
+
 }
 
 
@@ -115,7 +118,7 @@ input, textarea {
   margin-top: 3%;
   margin-left: 10%;
   margin-bottom: 0;
-  color: rgb(235, 232, 232);
+  color: #ebe8e8;
 }
       #trooperID-div, #squadron-div, #unitNumber-div {
         /* border: 2px solid green; */
@@ -141,6 +144,38 @@ input, textarea {
   flex-direction: column;
   align-items: center;
 }
+
+
+#support-div {
+  /* border: 2px solid red; */
+  margin-left: 5%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+      #weapon-field {
+        margin-top: -10%;
+        color: #e8d089;
+        font-size: 0.9rem;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 5px;
+      }
+      #armor-field {
+        margin-top: -5%;
+        margin-bottom: 2.5%;
+        color: #e8d089;
+        font-size: 0.9rem;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 5px;
+
+      }
 
 
 

@@ -81,7 +81,7 @@ function Understanding() {
                         </select>
 
 
-                        {/* {starSystem} */}
+                        {starSystem}
 
                     </div>
 
