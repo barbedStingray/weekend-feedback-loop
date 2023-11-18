@@ -25,7 +25,6 @@ function App() {
   const dispatch = useDispatch();
 
   // fetch the star systems
-
   const fetchStarSystems = () => {
     console.log(`fetching star system list`);
 
@@ -51,8 +50,8 @@ function App() {
       <Router>
 
         <header className='App-header'>
-          <h1 className='App-title'>Empire Patrol Report</h1>
-          <h4>Don't forget it!</h4>
+          <h1>Empire</h1>
+          <h2>Scout Report</h2>
         </header>
 
         <Route exact path="/">

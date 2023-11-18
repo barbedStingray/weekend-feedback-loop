@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Encounters() {
@@ -17,6 +17,7 @@ function Encounters() {
 
         const addRemoveBox = (e) => {
             console.log(`in add remove function`);
+            console.log(`TARGET:`, e.target.value);
 
             if(encounters.indexOf(e.target.value) < 0 ) {
                 setEncounters([...encounters, e.target.value]);
@@ -24,12 +25,25 @@ function Encounters() {
 
             }
             else if(encounters.indexOf(e.target.value) >= 0 ) {
-                console.log(`index`, encounters.indexOf(e.target.value));
-                setEncounters(encounters.splice(encounters.indexOf(e.target.value), 1));
-                console.log(`after push remove:`, encounters);
+                
+                let index = encounters.indexOf(e.target.value);
 
+                    encounters.splice(index, 1);
+                    console.log(`encountersNEW:`, encounters);
+
+                    setEncounters(encounters);
+ 
+            }
+            else {
+                console.log(`exception`);
             }
         }
+
+        useEffect(() => {
+            console.log(`select change`);
+        },[encounters]);
+
+
     
 
     return (
@@ -73,7 +87,7 @@ function Encounters() {
             <br />
             {encounters}
             <br />
-            {JSON.stringify(encounters)}
+            {/* {JSON.stringify(encounters)} */}
 
             <br />
                 <button onClick={continueToNext} id="continue-btn">Continue</button>

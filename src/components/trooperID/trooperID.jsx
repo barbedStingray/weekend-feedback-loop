@@ -19,54 +19,82 @@ function Feeling() {
     // dispatch - continue button
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-    // dispatch
-        const action = { type: 'SET_TROOPERID', payload: {trooperID, squadron, unitNumber} }
+
+        // dispatch
+        const action = { type: 'SET_TROOPERID', payload: { trooperID, squadron, unitNumber } }
         dispatch(action);
-    
-    // send to understanding
+
+        // send to understanding
         history.push('/starSystems');
 
     }
 
 
     return (
-        <div id="trooperID-div">
-            <h3>We don't care about your feelings</h3>
+        <div id="page-div">
+            {/* <h3>Trooper ID</h3> */}
+            <div
+                id="personel-id"
+                className="fadedDiv"
+            >
+                <form onSubmit={handleSubmit}>
 
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    placeholder="FN-2187" 
-                    required
-                    value={trooperID}
-                    onChange={(e) => setTrooperID(e.target.value)}
-                />
-                {trooperID}
+                    <div id="trooperID-div">
+                        <label>Identification #</label>
+                        <input
+                            type="text"
+                            placeholder="FN-2187"
+                            required
+                            value={trooperID}
+                            onChange={(e) => setTrooperID(e.target.value)}
+                        />
+                        {trooperID}
 
-                <input 
-                    type="text" 
-                    placeholder="Storm trooper" 
-                    required
-                    value={squadron}
-                    onChange={(e) => setSquadron(e.target.value)}
-                />
-                {squadron}
+                    </div>
 
-                <input 
-                    type="number" 
-                    placeholder="Unit #" 
-                    required
-                    value={unitNumber}
-                    onChange={(e) => setUnitNumber(e.target.value)}
-                />
-                {unitNumber}
 
-                <button 
-                    type="submit" 
-                    id="continue-btn"
-                >Continue</button>
-            </form>
+                    <div id="squadron-div">
+
+                        <div>
+                            <label>Squadron</label>
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Storm trooper"
+                                required
+                                value={squadron}
+                                onChange={(e) => setSquadron(e.target.value)}
+                            />
+                            {squadron}
+
+                        </div>
+                    </div>
+
+
+                    <div id="unitNumber-div">
+
+                        <label>Unit #</label>
+                        <input
+                            type="number"
+                            placeholder="Unit #"
+                            required
+                            value={unitNumber}
+                            onChange={(e) => setUnitNumber(e.target.value)}
+                        />
+                        {unitNumber}
+
+                    </div>
+
+                    <div id="next-btn">
+                        <button
+                            type="submit"
+                            id="continue-btn"
+                        >Continue</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     )
 }

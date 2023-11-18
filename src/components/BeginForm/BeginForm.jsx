@@ -16,11 +16,10 @@ function BeginForm() {
     return (
         <div id="begin-form">
 
-            <h3>Begin your Feedback!</h3>
             <button 
-                id="continue-btn"
+                id="begin-btn"
                 onClick={beginFeedback}
-            >Begin Survey!</button>
+            >Begin Report</button>
 
         </div>
     )
