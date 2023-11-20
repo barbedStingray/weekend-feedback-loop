@@ -18,10 +18,9 @@ function AdminPage() {
 
             let action = { type: 'SET_PATROL_REPORT', payload: response.data }
             dispatch(action);
-            // setPatrolReport(response.data);
 
         }).catch((error) => {
-            console.log(`error in /review GET`);
+            console.log(`error in /review GET`, error);
             alert(`error in /review GET`);
         });
     }
@@ -29,11 +28,12 @@ function AdminPage() {
         getPatrolResults();
     }, []);
 
+
     return (
         <div id="report-page">
 
 
-            <table id="report-table">
+            <table className='fadedDiv' id="report-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -42,8 +42,8 @@ function AdminPage() {
                         <th>System</th>
                         <th>Base</th>
                         <th>Type</th>
-                        <th>Weapon</th>
-                        <th>Armor</th>
+                        <th>wR</th>
+                        <th>aR</th>
                         <th>Encounters</th>
                         <th>Comments</th>
                     </tr>

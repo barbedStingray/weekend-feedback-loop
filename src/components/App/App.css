@@ -12,7 +12,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   height: 800px;
   display: flex;
   flex-direction: column;
@@ -335,6 +335,22 @@ width: 50%;
 
 #report-page {
   color:#e8d089;
+}
+
+
+/* ADMIN TABLE DATA */
+#report-table {
+  /* border: 2px solid green; */
+  margin: 3%;
+}
+th {
+  /* border: 2px solid orange; */
+  text-decoration: underline;
+  width: 20px;
+}
+td {
+  margin: 10px;
+  text-align: center;
 }
 
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 // Hash Router
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -51,9 +51,8 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        
-        <Route exact path='/admin'> <AdminHeader /> <AdminPage /> </Route>
 
+        <Route exact path='/admin'> <AdminHeader /> <AdminPage /> </Route>
         <Route exact path="/"> <Header /> <BeginForm /> </Route>
         <Route exact path="/trooperID" > <Header /> <TrooperID /> </Route>
         <Route exact path="/starSystems"> <Header /> <StarSystems /> </Route>

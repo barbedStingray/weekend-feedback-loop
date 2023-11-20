@@ -70,7 +70,7 @@ const comments = (state = '', action) => {
     return state;
 }
 
-// reports reducer
+// * reports reducer
 
 const patrolReports = (state = [], action) => {
     if(action.type === 'SET_PATROL_REPORT') {
@@ -94,7 +94,7 @@ const reduxStore = createStore(
         encounters,
         comments,
         patrolReports
-        
+
     }),
     applyMiddleware(logger)
 );
