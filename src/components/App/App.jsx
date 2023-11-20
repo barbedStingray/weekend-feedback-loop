@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 
 
 // Import Sections
+import Header from '../Header/Header.jsx';
+import AdminHeader from '../AdminHeader/AdminHeader.jsx';
 import BeginForm from '../BeginForm/BeginForm.jsx';
 import TrooperID from '../trooperID/trooperID.jsx';
 import StarSystems from '../StarSystem/StarSystem.jsx';
@@ -17,6 +19,7 @@ import Encounters from '../Encounters/Encounters.jsx';
 import Comments from '../Comments/Comments.jsx';
 import Review from '../Review/Review.jsx';
 import SubmitSuccess from '../SubmitSuccess/SubmitSuccess.jsx';
+import AdminPage from '../AdminPage/AdminPage.jsx';
 
 
 
@@ -48,43 +51,17 @@ function App() {
   return (
     <div className='App'>
       <Router>
+        
+        <Route exact path='/admin'> <AdminHeader /> <AdminPage /> </Route>
 
-        <header className='App-header'>
-          <h1>Empire</h1>
-          <h2>Scout Report</h2>
-        </header>
-
-        <Route exact path="/">
-          <BeginForm />
-        </Route>
-
-        <Route exact path="/trooperID" >
-          <TrooperID />
-        </Route>
-
-        <Route exact path="/starSystems">
-          <StarSystems />
-        </Route>
-
-        <Route exact path="/resources">
-            <Resources />
-        </Route>
-
-        <Route exact path="/encounters">
-            <Encounters />
-        </Route>
-
-        <Route exact path="/comments">
-            <Comments />
-        </Route>
-
-        <Route exact path="/review">
-            <Review />
-        </Route>
-
-        <Route exact path="/success">
-            <SubmitSuccess />
-        </Route>
+        <Route exact path="/"> <Header /> <BeginForm /> </Route>
+        <Route exact path="/trooperID" > <Header /> <TrooperID /> </Route>
+        <Route exact path="/starSystems"> <Header /> <StarSystems /> </Route>
+        <Route exact path="/resources"> <Header /> <Resources /> </Route>
+        <Route exact path="/encounters"> <Header /> <Encounters /> </Route>
+        <Route exact path="/comments"> <Header /> <Comments /> </Route>
+        <Route exact path="/review"> <Header /> <Review /> </Route>
+        <Route exact path="/success"> <Header /> <SubmitSuccess /> </Route>
 
       </Router>
     </div>

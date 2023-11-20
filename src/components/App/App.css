@@ -34,6 +34,10 @@ h2 {
   text-decoration: underline;
 }
 
+.admin {
+  color: #d70000;
+}
+
 h3 {
   color: #bebebe;
   margin: 10% 0%;
@@ -86,7 +90,7 @@ select {
   color: #e8d089;
   height: 2.5rem;
   font-size: 1rem;
-  width: 70%;
+  width: 85%;
   display: flex;
   margin-bottom: 20%;
 }
@@ -218,6 +222,18 @@ textarea {
 
       }
 
+#submit-success {
+  width: 50%;
+  margin-left: 3%;
+}
+.success {
+text-align: center; 
+}
+#new-btn {
+margin-left: 25%;
+width: 50%;
+}
+
 
 
 
@@ -315,6 +331,11 @@ textarea {
       #finish-btn {
         margin-bottom: -10%;
       }
+
+
+#report-page {
+  color:#e8d089;
+}
 
 
 

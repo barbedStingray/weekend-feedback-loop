@@ -14,11 +14,12 @@ function SubmitSuccess() {
 
     return (
         <div id='submit-success'>
-            <p>You have successfully submitted your form</p>
+            <h3 className='success'>Submission Complete</h3>
+            <h3 className='success'>Return to your Post</h3>
             <button
                     id="new-btn"
                     onClick={newReport}
-                >Submit a New Report</button>
+                >New Report</button>
         </div>
     )
 }

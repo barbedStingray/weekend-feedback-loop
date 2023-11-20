@@ -47,14 +47,31 @@ function Support() {
             <div id="support-div">
                 <form onSubmit={handleSubmit}>
 
-                <h3>Weapon Type and Condition</h3>
+                    <h3>Weapon Type and Condition</h3>
 
                     <div>
                         <select
                             onChange={(e) => setWeaponOutfit(e.target.value)}
                         >
                             <option value="" >Your Weapon</option>
-                            <option value="E-11 Blaster Rifle" >E-11 Blaster Rifle</option>
+                            <optgroup label="Blasters and Rifles">
+                                <option value="E-11 Blaster Rifle" >E-11 Blaster Rifle</option>
+                                <option value="EE-4 Carbine Rifle" >EE-4 Carbine Rifle</option>
+                                <option value="SX-21 Blaster Rifle" >SX-21 Blaster Rifle</option>
+                            </optgroup>
+                            <optgroup label="Heavy Weapons">
+                                <option value="DLT-19 Heavy Blaster Rifle" >DLT-19 Heavy Blaster Rifle</option>
+                                <option value="T-21 Light Repeating Blaster" >T-21 Light Repeating Blaster</option>
+                            </optgroup>
+                            <optgroup label="Sniper Rifles">
+                                <option value="E-11 Sniper Rifle" >E-11 Sniper Rifle</option>
+                                <option value="DLT-19x Targeting Blaster" >DLT-19x Targeting Blaster</option>
+                            </optgroup>
+                            <optgroup label="Pistols and Hand Weapons">
+                                <option value="SE-14C Blaster Pistol" >SE-14C Blaster Pistol</option>
+                                <option value="EC-17 Hold-Out Blaster" >EC-17 Hold-Out Blaster</option>
+                                <option value="Electrostaff" >Electrostaff</option>
+                            </optgroup>
                         </select>
 
                         {weaponOutfit}

@@ -70,6 +70,15 @@ const comments = (state = '', action) => {
     return state;
 }
 
+// reports reducer
+
+const patrolReports = (state = [], action) => {
+    if(action.type === 'SET_PATROL_REPORT') {
+        return action.payload;
+    }
+    return state;
+}
+
 
 
 
@@ -83,7 +92,9 @@ const reduxStore = createStore(
         starSystems,
         resources,
         encounters,
-        comments
+        comments,
+        patrolReports
+        
     }),
     applyMiddleware(logger)
 );

@@ -47,6 +47,22 @@ router.post('/', (req, res) => {
                 });
 });
 
+// GET for Admin page
+
+router.get('/', (req, res) => {
+    console.log(`GET /review`);
+
+    let queryText = 'SELECT * FROM "patrolreports";';
+
+    pool.query(queryText).then((result) => {
+        console.log(`success /review GET`);
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log(`error in /review GET`, error);
+        res.sendStatus(500);
+    });
+});
+
 
 
 // exports
