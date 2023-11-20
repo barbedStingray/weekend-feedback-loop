@@ -57,6 +57,13 @@ function Encounters() {
     }, [encounters]);
 
 
+        // send to ???
+        const goBackAPage = () => {
+            history.push('/resources');
+        }
+    
+
+
 
 
     return (
@@ -124,6 +131,11 @@ function Encounters() {
                         >Continue</button>
                     </div>
                 </form>
+
+                <button
+                id="back-btn"
+                onClick={goBackAPage}
+            >Back</button>
 
             </div>
         </div>

@@ -11,14 +11,33 @@ const pool = require('../modules/pool.js');
 router.post('/', (req, res) => {
     console.log('/review match body:', req.body);
 
-    let queryText = `INSERT INTO "feedback" 
-                    ("feeling", "understanding", "support", "comments")
-                    VALUES ($1, $2, $3, $4);`;
+    let queryText = `INSERT INTO "patrolreports" 
+                    (
+                    "trooperid", 
+                    "squadron", 
+                    "unitnumber",
+                    "starsystem",
+                    "baselocation",
+                    "weapon",
+                    "wcondition",
+                    "acondition",
+                    "encounters",
+                    "comments"
+                    )
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`;
 
-    pool.query(queryText, [req.body.feeling, 
-                        req.body.understanding, 
-                        req.body.support, 
+    pool.query(queryText, [
+                        req.body.trooperid, 
+                        req.body.squadron, 
+                        req.body.unitnumber,
+                        req.body.starsystem,
+                        req.body.baselocation,
+                        req.body.weapon,
+                        req.body.wcondition,
+                        req.body.acondition,
+                        req.body.encounters,
                         req.body.comments
+
                 ]).then((result) => {
                     console.log(`send success!`);
                     res.sendStatus(201);

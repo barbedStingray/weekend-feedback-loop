@@ -22,8 +22,17 @@ function Review() {
 
         // POST 
         axios.post('/review', {
+            trooperid: trooperID.trooperID,
+            squadron: trooperID.squadron,
+            unitnumber: trooperID.unitNumber,
+            starsystem: starSystems.starSystem,
+            baselocation: starSystems.baseLocation,
+            weapon: resources.weaponOutfit,
+            wcondition: resources.weaponCondition,
+            acondition: resources.armorCondition,
+            encounters: encounters,
+            comments: comments
 
-            // todo pass your object here
 
         }).then((response) => {
             console.log(`POST /review success`);
@@ -95,10 +104,6 @@ function Review() {
 
 
 
-            {/* <button
-                onClick={goBackAPage}
-                id="continue-btn"
-            >Go Back</button> */}
 
 
 

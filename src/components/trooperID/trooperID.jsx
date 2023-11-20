@@ -44,7 +44,6 @@ function Feeling() {
                         <input
                             type="text"
                             placeholder="FN-2187"
-                            required
                             value={trooperID}
                             onChange={(e) => setTrooperID(e.target.value)}
                         />
@@ -62,7 +61,6 @@ function Feeling() {
                             <input
                                 type="text"
                                 placeholder="Storm trooper"
-                                required
                                 value={squadron}
                                 onChange={(e) => setSquadron(e.target.value)}
                             />
@@ -78,7 +76,6 @@ function Feeling() {
                         <input
                             type="number"
                             placeholder="Unit #"
-                            required
                             value={unitNumber}
                             onChange={(e) => setUnitNumber(e.target.value)}
                         />

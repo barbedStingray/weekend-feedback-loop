@@ -51,9 +51,9 @@ function Comments() {
             </form>
 
             <button
-                id="continue-btn"
+                id="back-btn"
                 onClick={goBackAPage}
-            >Go Back</button>
+            >Back</button>
 
         </div>
     )

@@ -115,10 +115,10 @@ function Understanding() {
                     </div>
                 </form>
 
-                {/* <button
-                    id="continue-btn"
+                <button
+                    id="back-btn"
                     onClick={goBackAPage}
-                >Go Back</button> */}
+                >Back</button>
 
             </div>
         </div>

@@ -47,7 +47,6 @@ h5 {
 #next-btn {
   display: flex;
   justify-content: center;
-  /* border: 5px solid orange; */
 }
 
 button[type="submit"] {
@@ -58,6 +57,28 @@ button[type="submit"] {
   background-color: #06024c;
   border: 1px solid #e8d089;
   color: #e8d089;
+}
+
+#new-btn {
+  width: 60%;
+  margin: 1em auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color: #06024c;
+  border: 1px solid #e8d089;
+  color: #e8d089;
+
+}
+
+#back-btn {
+  width: 35%;
+  margin: 1em auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color: #430000;
+  border: 1px solid #e8d089;
+  color: #e8d089;
+  max-width: 80px;
 }
 
 select {
@@ -255,7 +276,7 @@ textarea {
 
 #review-div {
   /* border: 2px solid red; */
-    margin-left: 5%;
+    margin-left: 13%;
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -287,7 +308,7 @@ textarea {
         height: 2em;
         font-size: 1.1rem;
         /* background-color: #06024c; */
-        background-color: #4c0202;
+        background-color: #024c16;
         border: 1px solid #e8d089;
         color: #e8d089;
       }
