@@ -13,16 +13,18 @@ function AdminPage() {
     function getPatrolResults() {
         console.log(`getting patrol resulsts`);
 
-        axios.get('/review').then((response) => {
-            console.log(`success /review GET`, response.data);
+        dispatch({ type: 'FETCH_PATROL_REPORTS'});
 
-            let action = { type: 'SET_PATROL_REPORT', payload: response.data }
-            dispatch(action);
+        // axios.get('/review').then((response) => {
+        //     console.log(`success /review GET`, response.data);
 
-        }).catch((error) => {
-            console.log(`error in /review GET`, error);
-            alert(`error in /review GET`);
-        });
+        //     let action = { type: 'SET_PATROL_REPORT', payload: response.data }
+        //     dispatch(action);
+
+        // }).catch((error) => {
+        //     console.log(`error in /review GET`, error);
+        //     alert(`error in /review GET`);
+        // });
     }
     useEffect(() => {
         getPatrolResults();

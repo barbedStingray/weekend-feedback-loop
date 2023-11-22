@@ -9,6 +9,9 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
 
 // SAGA step 1. import
+import createSagaMiddleware from 'redux-saga';
+import { takeEvery, takeLatest, put } from 'redux-saga/effects';
+import axios from 'axios';
 
 
 
@@ -23,8 +26,6 @@ const trooperID = (state = {}, action) => {
     }
     return state;
 }
-
-
 
 // * starSystems data reducer
 
@@ -81,9 +82,29 @@ const patrolReports = (state = [], action) => {
     return state;
 }
 
+// ? write Generator function to fetch your patrol reports
+function* fetchPatrolReports() {
+    try {
+        console.log(`fetching patrol reports`);
 
+        const response = yield axios.get('/review');
 
+        const action = { type: 'SET_PATROL_REPORT', payload: response.data }
+        yield put(action);
 
+    } catch (error) {
+        console.log(`get patrol reports error`, error);
+        alert(`something went wrong`);
+    }
+}
+
+// ? Write your root saga
+function* rootSaga() {
+    // sagas go here
+    yield takeLatest('FETCH_PATROL_REPORTS', fetchPatrolReports);
+}
+
+const sagaMiddleware = createSagaMiddleware();
 
 // Step 2. create your store
 const reduxStore = createStore(
@@ -98,8 +119,10 @@ const reduxStore = createStore(
         patrolReports
 
     }),
-    applyMiddleware(logger)
+    applyMiddleware(sagaMiddleware, logger)
 );
+
+sagaMiddleware.run(rootSaga);
 
 // Step 3: wrap the app in your provider
 const root = ReactDOM.createRoot(document.getElementById('root'));
