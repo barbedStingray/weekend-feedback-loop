@@ -39,12 +39,12 @@ function Encounters() {
         }
         else if (encounters.indexOf(e.target.value) >= 0) {
 
-            let index = encounters.indexOf(e.target.value);
+            // let index = encounters.indexOf(e.target.value);
 
-            encounters.splice(index, 1);
+            // encounters.splice(index, 1);
             console.log(`encountersNEW:`, encounters);
 
-            setEncounters(encounters);
+            setEncounters(encounters.filter( (enc) => enc !== e.target.value ));
 
         }
         else {

@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App/App';
 
-// Step 1. Import Provider, middleware, combinereducers, create store
+// REDUX Step 1. Import Provider, middleware, combinereducers, create store
 import { Provider } from 'react-redux';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
+
+// SAGA step 1. import
 
 
 
