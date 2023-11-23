@@ -98,10 +98,20 @@ function* fetchPatrolReports() {
     }
 }
 
+function* postPatrolReport(action) {
+    console.log(`posting new report`);
+
+    yield axios.post('/review', action.payload);
+
+    yield put({ type: 'FETCH_PATROL_REPORT' });
+
+}
+
 // ? Write your root saga
 function* rootSaga() {
     // sagas go here
     yield takeLatest('FETCH_PATROL_REPORTS', fetchPatrolReports);
+    yield takeLatest('POST_PATROL_REPORT', postPatrolReport);
 }
 
 const sagaMiddleware = createSagaMiddleware();

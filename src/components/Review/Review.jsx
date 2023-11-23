@@ -1,7 +1,7 @@
 
 // Imports
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 
@@ -9,6 +9,7 @@ function Review() {
 
     // Variables
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const trooperID = useSelector(store => store.trooperID);
     const starSystems = useSelector(store => store.starSystems);
@@ -20,29 +21,22 @@ function Review() {
     function completeForm() {
         console.log('form complete!');
 
-        // POST 
-        axios.post('/review', {
-            trooperid: trooperID.trooperID,
-            squadron: trooperID.squadron,
-            unitnumber: trooperID.unitNumber,
-            starsystem: starSystems.starSystem,
-            baselocation: starSystems.baseLocation,
-            weapon: resources.weaponOutfit,
-            wcondition: resources.weaponCondition,
-            acondition: resources.armorCondition,
-            encounters: encounters,
-            comments: comments
-
-
-        }).then((response) => {
-            console.log(`POST /review success`);
-
-            // send to SubmitSuccess
-            history.push('/success');
-        }).catch((error) => {
-            console.log(`post /review error`);
-            alert(`post /review error`);
-        });
+        dispatch({
+            type: 'POST_PATROL_REPORT',
+            payload: {
+                trooperid: trooperID.trooperID,
+                squadron: trooperID.squadron,
+                unitnumber: trooperID.unitNumber,
+                starsystem: starSystems.starSystem,
+                baselocation: starSystems.baseLocation,
+                weapon: resources.weaponOutfit,
+                wcondition: resources.weaponCondition,
+                acondition: resources.armorCondition,
+                encounters: encounters,
+                comments: comments
+            }
+        })
+        history.push('/success');
     }
 
     // send to comments
