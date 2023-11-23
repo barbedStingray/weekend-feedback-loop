@@ -15,20 +15,16 @@ function AdminPage() {
 
         dispatch({ type: 'FETCH_PATROL_REPORTS'});
 
-        // axios.get('/review').then((response) => {
-        //     console.log(`success /review GET`, response.data);
-
-        //     let action = { type: 'SET_PATROL_REPORT', payload: response.data }
-        //     dispatch(action);
-
-        // }).catch((error) => {
-        //     console.log(`error in /review GET`, error);
-        //     alert(`error in /review GET`);
-        // });
     }
     useEffect(() => {
         getPatrolResults();
     }, []);
+
+    function deleteReport(id) {
+        console.log(`deleting report id:`, id);
+
+
+    }
 
 
     return (
@@ -38,6 +34,7 @@ function AdminPage() {
             <table className='fadedDiv' id="report-table">
                 <thead>
                     <tr>
+                        <th>REAL ID</th>
                         <th>ID</th>
                         <th>Squad</th>
                         <th>Unit</th>
@@ -48,12 +45,14 @@ function AdminPage() {
                         <th>aR</th>
                         <th>Encounters</th>
                         <th>Comments</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                         {
                             patrolReport.map((report, index) => 
                             <tr key={index}>
+                                <td>{report.id}</td>
                                 <td>{report.trooperid}</td>
                                 <td>{report.squadron}</td>
                                 <td>{report.unitnumber}</td>
@@ -64,6 +63,7 @@ function AdminPage() {
                                 <td>{report.acondition}</td>
                                 <td>{report.encounters}</td>
                                 <td>{report.comments}</td>
+                                <td><button onClick={deleteReport(report.id)}>x</button></td>
                             </tr>
                             )}
                 </tbody>
