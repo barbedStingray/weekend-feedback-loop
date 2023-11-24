@@ -1,31 +1,28 @@
 
+// imports - middleware
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function AdminPage() {
 
+    // variables
     const patrolReport = useSelector(store => store.patrolReports);
     const dispatch = useDispatch();
 
-
+    // get request for dom of the patrol reports
     function getPatrolResults() {
         console.log(`getting patrol resulsts`);
-
         dispatch({ type: 'FETCH_PATROL_REPORTS'});
-
     }
     useEffect(() => {
         getPatrolResults();
     }, []);
 
+    // delete request for patrol reports
     function deleteReport(id) {
         console.log(`deleting report id:`, id);
-
-
+        dispatch({ type: 'DELETE_REPORT', payload: id });
     }
-
 
     return (
         <div id="report-page">
@@ -63,7 +60,7 @@ function AdminPage() {
                                 <td>{report.acondition}</td>
                                 <td>{report.encounters}</td>
                                 <td>{report.comments}</td>
-                                <td><button onClick={deleteReport(report.id)}>x</button></td>
+                                <td><button onClick={() => deleteReport(report.id)}>x</button></td>
                             </tr>
                             )}
                 </tbody>

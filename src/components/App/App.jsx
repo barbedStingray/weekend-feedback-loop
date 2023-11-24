@@ -1,14 +1,15 @@
+
+// imports - middleware
+import { HashRouter as Router, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
 import './App.css';
 
-// Hash Router
-import { HashRouter as Router, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 
 
-// Import Sections
+// Imports - components
 import Header from '../Header/Header.jsx';
 import AdminHeader from '../AdminHeader/AdminHeader.jsx';
 import BeginForm from '../BeginForm/BeginForm.jsx';
@@ -27,7 +28,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  // fetch the star systems
+  // fetch the star systems (populates dropdown menu in star systems)
   const fetchStarSystems = () => {
     console.log(`fetching star system list`);
 
@@ -42,10 +43,6 @@ function App() {
   useEffect(() => {
     fetchStarSystems();
   }, []);
-
-
-
-  // form variables
 
 
   return (

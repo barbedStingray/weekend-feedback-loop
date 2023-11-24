@@ -64,6 +64,23 @@ router.get('/', (req, res) => {
 });
 
 
+// DELETE report
+
+router.delete('/:id', (req, res) => {
+    console.log(`deleting report`, req.params.id);
+
+    let queryText = 'DELETE FROM "patrolreports" WHERE "id" = $1;';
+
+    
+    pool.query(queryText, [req.params.id]).then((result) => {
+        console.log(`success in delete`);
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log(`error in delete`, error);
+        res.sendStatus(500);
+    });
+});
+
 
 // exports
 

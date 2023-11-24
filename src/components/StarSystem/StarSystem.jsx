@@ -1,37 +1,33 @@
 
-// Imports
+// Imports - middleware
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-// components
+// imports - components
 import RadioButton from '../RadioButton/RadioButton.jsx';
 
 
-function Understanding() {
 
+function StarSystems() {
+
+    // variables
     const history = useHistory();
     const dispatch = useDispatch();
-
-    // Variables
     const starSystemList = useSelector(store => store.starSystemList);
     const [starSystem, setStarSystem] = useState('');
     const [baseLocation, setBaseLocation] = useState('');
     const [baseList, setBaseList] = useState([]);
-    // console.log(`baseList:`, baseList);
 
-
+    
+    // populate drop-down menu
     function getIndividualBases() {
         console.log(`getting bases`);
 
         for (let i = 0; i < starSystemList.length; i++) {
             if (starSystem === starSystemList[i].system) {
-                // console.log(`SSbases:`, starSystemList[i].bases);
                 let newBase = starSystemList[i].bases.split(',');
-                // console.log(`SSbasesSplit:`, newBase);
-
                 return setBaseList(newBase);
-
             }
             else {
                 console.log(`not the correct system`);
@@ -44,20 +40,17 @@ function Understanding() {
     }, [starSystem]);
 
 
-    // function to continue
+    // continue button
     const handleSubmit = (e) => {
         e.preventDefault();
-
         dispatch({
             type: 'DATA_STAR_SYSTEM',
             payload: { starSystem, baseLocation }
         });
-
         history.push('/resources');
     }
 
-
-    // send to feelings
+    // back button
     const goBackAPage = () => {
         history.push('/trooperID');
     }
@@ -79,15 +72,11 @@ function Understanding() {
                             {starSystemList.map((planet) =>
                                 <option key={planet.id} value={planet.system} >{planet.system}</option>)}
                         </select>
-
-
-                        {starSystem}
-
                     </div>
 
                     <h3>Operational Base</h3>
 
-                    <div className={ starSystem }>
+                    <div className={starSystem}>
                         {baseList.map((planet, index) =>
                             <div
                                 id="base-div"
@@ -100,19 +89,18 @@ function Understanding() {
                                 />
                             </div>
                         )}
-                        {baseLocation}
-
                     </div>
 
                     <div id="filler-div"></div>
 
-                            
+
                     <div id="next-btn">
                         <button
                             type="submit"
                             id="continue-btn"
                         >Continue</button>
                     </div>
+                    
                 </form>
 
                 <button
@@ -125,4 +113,4 @@ function Understanding() {
     )
 }
 
-export default Understanding;
+export default StarSystems;

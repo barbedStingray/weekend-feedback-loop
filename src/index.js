@@ -82,7 +82,6 @@ const patrolReports = (state = [], action) => {
     return state;
 }
 
-// ? write Generator function to fetch your patrol reports
 function* fetchPatrolReports() {
     try {
         console.log(`fetching patrol reports`);
@@ -102,16 +101,19 @@ function* postPatrolReport(action) {
     console.log(`posting new report`);
 
     yield axios.post('/review', action.payload);
-
-    yield put({ type: 'FETCH_PATROL_REPORT' });
-
+    yield put({ type: 'FETCH_PATROL_REPORTS' });
 }
 
-// ? Write your root saga
+function* deleteReport(action) {
+    yield axios.delete(`/review/${action.payload}`);
+    yield put({ type: 'FETCH_PATROL_REPORTS' });
+}
+
 function* rootSaga() {
     // sagas go here
     yield takeLatest('FETCH_PATROL_REPORTS', fetchPatrolReports);
     yield takeLatest('POST_PATROL_REPORT', postPatrolReport);
+    yield takeLatest('DELETE_REPORT', deleteReport);
 }
 
 const sagaMiddleware = createSagaMiddleware();

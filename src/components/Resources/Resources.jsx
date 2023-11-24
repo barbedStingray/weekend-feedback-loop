@@ -1,42 +1,37 @@
 
-// Imports
+// Imports - middleware
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-// components
+// imports - components
 import RadioButton from '../RadioButton/RadioButton.jsx';
 
 
-function Support() {
+function Resources() {
 
     // Variables
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [weaponOutfit, setWeaponOutfit] = useState('');
     const [weaponCondition, setWeaponCondition] = useState('');
     const [armorCondition, setArmorCondition] = useState('');
 
 
-    const history = useHistory();
-    const dispatch = useDispatch();
-
-
-    // function to continue
+    // continue button
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('supportRate', weaponOutfit);
 
-        // dispatch
         const action = {
             type: 'SET_RESOURCES',
             payload: { weaponOutfit, weaponCondition, armorCondition }
         }
         dispatch(action);
-
-        // send to Comments
         history.push('/encounters');
     }
 
-    // send to Understanding
+    // back button
     const goBackAPage = () => {
         history.push('/starSystems');
     }
@@ -73,9 +68,6 @@ function Support() {
                                 <option value="Electrostaff" >Electrostaff</option>
                             </optgroup>
                         </select>
-
-                        {weaponOutfit}
-
                     </div>
 
                     <div id="weapon-field" className="fadedDiv">
@@ -84,9 +76,6 @@ function Support() {
                         <RadioButton value='3' name="weapon-condition" status={setWeaponCondition} />
                         <RadioButton value='4' name="weapon-condition" status={setWeaponCondition} />
                         <RadioButton value='5' name="weapon-condition" status={setWeaponCondition} />
-
-                        {weaponCondition}
-
                     </div>
 
                     <h3>Armor Condition</h3>
@@ -97,7 +86,6 @@ function Support() {
                         <RadioButton value='3' name="armor-condition" status={setArmorCondition} />
                         <RadioButton value='4' name="armor-condition" status={setArmorCondition} />
                         <RadioButton value='5' name="armor-condition" status={setArmorCondition} />
-                        {armorCondition}
                     </div>
 
 
@@ -107,6 +95,7 @@ function Support() {
                             id="continue-btn"
                         >Continue</button>
                     </div>
+
                 </form>
 
                 <button
@@ -119,4 +108,4 @@ function Support() {
     )
 }
 
-export default Support;
+export default Resources;

@@ -1,4 +1,5 @@
 
+// imports - middleware
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -6,13 +7,12 @@ import { useDispatch } from 'react-redux';
 
 function Comments() {
 
+    // variables
     const history = useHistory();
     const dispatch = useDispatch();
-
-    // Variables
     const [commentInput, setCommentInput] = useState('');
 
-
+    // continue button
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('comments:', commentInput);
@@ -21,11 +21,10 @@ function Comments() {
             type: 'SET_COMMENTS',
             payload: commentInput
         });
-
         history.push('/review');
     }
 
-    // send to Support
+    // go back button
     const goBackAPage = () => {
         history.push('/encounters');
     }
@@ -40,7 +39,6 @@ function Comments() {
                     value={commentInput}
                     onChange={(e) => setCommentInput(e.target.value)}
                 ></textarea>
-                {commentInput}
 
                 <div id="next-btn">
                         <button

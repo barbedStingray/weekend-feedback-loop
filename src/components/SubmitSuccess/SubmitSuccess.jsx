@@ -1,12 +1,14 @@
 
-// Imports 
+// Imports - middleware
 import { useHistory } from 'react-router-dom';
  
 
 function SubmitSuccess() {
 
+    // variables
     const history = useHistory();
 
+    // restart report button
     const newReport = () => {
         history.push('/');
     }

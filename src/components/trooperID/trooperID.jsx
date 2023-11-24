@@ -1,4 +1,5 @@
 
+// imports - middleware
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -7,32 +8,27 @@ import { useHistory } from 'react-router-dom';
 
 function Feeling() {
 
+    // variables
     const dispatch = useDispatch();
     const history = useHistory();
-
     const [trooperID, setTrooperID] = useState('');
     const [squadron, setSquadron] = useState('');
     const [unitNumber, setUnitNumber] = useState('');
 
 
-
-    // dispatch - continue button
+    // continue button
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // dispatch
         const action = { type: 'SET_TROOPERID', payload: { trooperID, squadron, unitNumber } }
         dispatch(action);
 
-        // send to understanding
         history.push('/starSystems');
-
     }
 
 
     return (
         <div id="page-div">
-            {/* <h3>Trooper ID</h3> */}
             <div
                 id="personel-id"
                 className="fadedDiv"
@@ -47,10 +43,7 @@ function Feeling() {
                             value={trooperID}
                             onChange={(e) => setTrooperID(e.target.value)}
                         />
-                        {trooperID}
-
                     </div>
-
 
                     <div id="squadron-div">
 
@@ -64,8 +57,6 @@ function Feeling() {
                                 value={squadron}
                                 onChange={(e) => setSquadron(e.target.value)}
                             />
-                            {squadron}
-
                         </div>
                     </div>
 
@@ -79,8 +70,6 @@ function Feeling() {
                             value={unitNumber}
                             onChange={(e) => setUnitNumber(e.target.value)}
                         />
-                        {unitNumber}
-
                     </div>
 
                     <div id="next-btn">

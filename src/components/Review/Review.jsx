@@ -1,8 +1,7 @@
 
-// Imports
+// Imports - middleware
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 
 
 function Review() {
@@ -10,14 +9,13 @@ function Review() {
     // Variables
     const history = useHistory();
     const dispatch = useDispatch();
-
     const trooperID = useSelector(store => store.trooperID);
     const starSystems = useSelector(store => store.starSystems);
     const resources = useSelector(store => store.resources);
     const encounters = useSelector(store => store.encounters);
     const comments = useSelector(store => store.comments);
 
-    // ? Complete and Submit your info to the server
+    // submit button
     function completeForm() {
         console.log('form complete!');
 
@@ -39,7 +37,7 @@ function Review() {
         history.push('/success');
     }
 
-    // send to comments
+    // ? Is this what you want? 
     const goBackAPage = () => {
         history.push('/comments');
     }
@@ -53,7 +51,6 @@ function Review() {
                     id="complete-btn"
                 >Complete</button>
             </div>
-
 
             <h3 className="last">Report Overview</h3>
 
@@ -95,12 +92,6 @@ function Review() {
 
             {/* Comments */}
             <p id="comment-review">{comments}</p>
-
-
-
-
-
-
         </div>
     )
 }
