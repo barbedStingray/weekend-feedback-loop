@@ -42,6 +42,7 @@ function Feeling() {
                             placeholder="FN-2187"
                             value={trooperID}
                             onChange={(e) => setTrooperID(e.target.value)}
+                            required
                         />
                     </div>
 
@@ -56,6 +57,7 @@ function Feeling() {
                                 placeholder="Storm trooper"
                                 value={squadron}
                                 onChange={(e) => setSquadron(e.target.value)}
+                                required
                             />
                         </div>
                     </div>
@@ -69,6 +71,7 @@ function Feeling() {
                             placeholder="Unit #"
                             value={unitNumber}
                             onChange={(e) => setUnitNumber(e.target.value)}
+                            required
                         />
                     </div>
 

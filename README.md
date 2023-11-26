@@ -1,7 +1,5 @@
 # Empire Scout Report
 
-[Instructions]
-
 
 -- This is the Empire Scout Report (ESR). 
 
@@ -25,6 +23,19 @@ Resources
 Encounters
     - Check ALL encounters that occured
 Comments
-    - Please identify if there is additional information
+    - Please identify any additional information
 Review and Submit
     - Review your data and Submit your form
+
+## Admin form
+    Displays all data collected from submissions
+    Reports can be deleted if they are of no concern
+
+
+## Future Updates
+    - upgrade the css properties and maybe animations
+    - install a 'PUT' request to flag different reports
+    - expand on the report questions and details
+    - format the admin page so that not ALL info shows on the front page, 
+        but rather a list to be expanded to read the detailed report
+
