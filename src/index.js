@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App/App';
@@ -10,7 +11,7 @@ import logger from 'redux-logger';
 
 // SAGA step 1. import
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 
@@ -20,7 +21,7 @@ import axios from 'axios';
 // * trooperID Reducer
 
 const trooperID = (state = {}, action) => {
-    if(action.type === 'SET_TROOPERID') {
+    if (action.type === 'SET_TROOPERID') {
         // pass the new variable here.
         return action.payload;
     }
@@ -30,7 +31,7 @@ const trooperID = (state = {}, action) => {
 // * starSystems data reducer
 
 const starSystems = (state = {}, action) => {
-    if(action.type === 'DATA_STAR_SYSTEM') {
+    if (action.type === 'DATA_STAR_SYSTEM') {
         return action.payload;
     }
     return state;
@@ -38,7 +39,7 @@ const starSystems = (state = {}, action) => {
 
 // * starsystems list reducer
 const starSystemList = (state = [], action) => {
-    if(action.type === 'SET_STAR_SYSTEM_LIST') {
+    if (action.type === 'SET_STAR_SYSTEM_LIST') {
         return action.payload;
     }
     return state;
@@ -49,7 +50,7 @@ const starSystemList = (state = [], action) => {
 // * resources reducer
 
 const resources = (state = {}, action) => {
-    if(action.type === 'SET_RESOURCES') {
+    if (action.type === 'SET_RESOURCES') {
         return action.payload;
     }
     return state;
@@ -58,7 +59,7 @@ const resources = (state = {}, action) => {
 // * encounters reducer
 
 const encounters = (state = [], action) => {
-    if(action.type === 'SET_ENCOUNTERS') {
+    if (action.type === 'SET_ENCOUNTERS') {
         return action.payload;
     }
     return state;
@@ -67,7 +68,7 @@ const encounters = (state = [], action) => {
 // * comments reducer
 
 const comments = (state = '', action) => {
-    if(action.type === 'SET_COMMENTS') {
+    if (action.type === 'SET_COMMENTS') {
         return action.payload;
     }
     return state;
@@ -76,7 +77,7 @@ const comments = (state = '', action) => {
 // * reports reducer
 
 const patrolReports = (state = [], action) => {
-    if(action.type === 'SET_PATROL_REPORT') {
+    if (action.type === 'SET_PATROL_REPORT') {
         return action.payload;
     }
     return state;
@@ -140,9 +141,11 @@ sagaMiddleware.run(rootSaga);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Provider store={reduxStore}>
-            <App />
-        </Provider>
+        <BrowserRouter>
+            <Provider store={reduxStore}>
+                <App />
+            </Provider>
+        </BrowserRouter>
     </React.StrictMode>
 );
 

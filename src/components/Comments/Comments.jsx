@@ -1,14 +1,14 @@
 
 // imports - middleware
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
 function Comments() {
 
     // variables
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [commentInput, setCommentInput] = useState('');
 
@@ -21,12 +21,12 @@ function Comments() {
             type: 'SET_COMMENTS',
             payload: commentInput
         });
-        history.push('/review');
+        navigate('/review');
     }
 
     // go back button
     const goBackAPage = () => {
-        history.push('/encounters');
+        navigate('/encounters');
     }
 
     return (

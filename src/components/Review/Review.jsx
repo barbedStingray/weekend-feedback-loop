@@ -1,13 +1,13 @@
 
 // Imports - middleware
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 
 function Review() {
 
     // Variables
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const trooperID = useSelector(store => store.trooperID);
     const starSystems = useSelector(store => store.starSystems);
@@ -34,12 +34,12 @@ function Review() {
                 comments: comments
             }
         })
-        history.push('/success');
+        navigate('/success');
     }
 
     // ? Is this what you want? 
     const goBackAPage = () => {
-        history.push('/comments');
+        navigate('/comments');
     }
 
     return (

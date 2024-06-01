@@ -2,15 +2,15 @@
 // imports - middleware
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
-function Feeling() {
+function TrooperID() {
 
     // variables
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [trooperID, setTrooperID] = useState('');
     const [squadron, setSquadron] = useState('');
     const [unitNumber, setUnitNumber] = useState('');
@@ -23,7 +23,7 @@ function Feeling() {
         const action = { type: 'SET_TROOPERID', payload: { trooperID, squadron, unitNumber } }
         dispatch(action);
 
-        history.push('/starSystems');
+        navigate('/starSystems');
     }
 
 
@@ -88,4 +88,4 @@ function Feeling() {
     )
 }
 
-export default Feeling;
+export default TrooperID;

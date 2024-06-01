@@ -1,13 +1,13 @@
 
 // imports - middleware
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 function Encounters() {
 
     // variables
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [encounters, setEncounters] = useState([]);
     console.log(`first encounters is:`, encounters);
@@ -23,7 +23,7 @@ function Encounters() {
             payload: encounters
         }
         dispatch(action);
-        history.push('/comments');
+        navigate('/comments');
     }
 
     // set your encounters
@@ -40,7 +40,7 @@ function Encounters() {
 
         // back button
         const goBackAPage = () => {
-            history.push('/resources');
+            navigate('/resources');
         }
 
 

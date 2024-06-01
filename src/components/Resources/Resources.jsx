@@ -1,7 +1,7 @@
 
 // Imports - middleware
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // imports - components
@@ -11,7 +11,7 @@ import RadioButton from '../RadioButton/RadioButton.jsx';
 function Resources() {
 
     // Variables
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [weaponOutfit, setWeaponOutfit] = useState('');
     const [weaponCondition, setWeaponCondition] = useState('');
@@ -28,12 +28,12 @@ function Resources() {
             payload: { weaponOutfit, weaponCondition, armorCondition }
         }
         dispatch(action);
-        history.push('/encounters');
+        navigate('/encounters');
     }
 
     // back button
     const goBackAPage = () => {
-        history.push('/starSystems');
+        navigate('/starSystems');
     }
 
 

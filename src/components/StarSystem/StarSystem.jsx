@@ -1,43 +1,26 @@
 
-// Imports - middleware
-import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// imports - components
+// components
 import RadioButton from '../RadioButton/RadioButton.jsx';
+import useSetStarSystems from '../../scripts/useSetStarSystems.js';
+import useSetOperationalBases from '../../scripts/useSetOperationalBases.js';
 
 
+function StarSystem() {
 
-function StarSystems() {
-
-    // variables
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const starSystemList = useSelector(store => store.starSystemList);
-    const [starSystem, setStarSystem] = useState('');
     const [baseLocation, setBaseLocation] = useState('');
-    const [baseList, setBaseList] = useState([]);
-
-    
-    // populate drop-down menu
-    function getIndividualBases() {
-        console.log(`getting bases`);
-
-        for (let i = 0; i < starSystemList.length; i++) {
-            if (starSystem === starSystemList[i].system) {
-                let newBase = starSystemList[i].bases.split(',');
-                return setBaseList(newBase);
-            }
-            else {
-                console.log(`not the correct system`);
-            }
-        }
-    }
-    useEffect(() => {
-        console.log(`useEffect:`, starSystem);
-        getIndividualBases();
-    }, [starSystem]);
+     
+    const [starSystem, setStarSystem] = useState(0);
+    const [starSystemList, status] = useSetStarSystems();
+    const [operationalBases, baseStatus] = useSetOperationalBases(starSystem); 
+    // console.log('starSystemList', starSystemList);
+    // console.log('operationalBases', operationalBases, baseStatus);
+    // console.log('star System', starSystem);
 
 
     // continue button
@@ -47,70 +30,76 @@ function StarSystems() {
             type: 'DATA_STAR_SYSTEM',
             payload: { starSystem, baseLocation }
         });
-        history.push('/resources');
+        navigate('/resources');
     }
 
-    // back button
-    const goBackAPage = () => {
-        history.push('/trooperID');
-    }
 
-    return (
-        <div id="page-div">
-
-            <div id="star-system">
-
-                <h3>Star System</h3>
-
-                <form onSubmit={handleSubmit}>
-
-                    <div>
-                        <select
-                            required
-                            onChange={(e) => setStarSystem(e.target.value)}
-                        >
-                            {starSystemList.map((planet) =>
-                                <option key={planet.id} value={planet.system} >{planet.system}</option>)}
-                        </select>
-                    </div>
-
-                    <h3>Operational Base</h3>
-
-                    <div className={starSystem}>
-                        {baseList.map((planet, index) =>
-                            <div
-                                id="base-div"
-                                key={index}
-                            >
-                                <RadioButton
-                                    value={planet}
-                                    name='base-location'
-                                    status={setBaseLocation}
-                                />
-                            </div>
-                        )}
-                    </div>
-
-                    <div id="filler-div"></div>
-
-
-                    <div id="next-btn">
-                        <button
-                            type="submit"
-                            id="continue-btn"
-                        >Continue</button>
-                    </div>
-                    
-                </form>
-
-                <button
-                    id="back-btn"
-                    onClick={goBackAPage}
-                >Back</button>
-
+    if (status !== 'loaded') {
+        return (
+            <div>
+                <p>Page Is Loading</p>
             </div>
-        </div>
-    )
+        )
+    } else {
+
+        return (
+            <div id="page-div">
+
+                <div id="star-system">
+
+                    <h3>Star System</h3>
+
+                    <form onSubmit={handleSubmit}>
+
+                        <div>
+                            <select
+                                required
+                                onChange={(e) => setStarSystem(e.target.value)}
+                            >
+                                <option>Select One</option>
+                                {starSystemList[0].map((planet, i) =>
+                                    <option key={planet.id} value={planet.id} >{planet.system}</option>)}
+                            </select>
+                        </div>
+
+                        <h3>Operational Base</h3>
+
+                        <div className={starSystem}>
+                            {operationalBases.map((base, index) =>
+                                <div
+                                    id="base-div"
+                                    key={index}
+                                >
+                                    <RadioButton
+                                        value={base.base}
+                                        name='base-location'
+                                        status={setBaseLocation}
+                                    />
+                                </div>
+                            )}
+                        </div>
+
+                        <div id="filler-div"></div>
+
+
+                        <div id="next-btn">
+                            <button
+                                type="submit"
+                                id="continue-btn"
+                            >Continue</button>
+                        </div>
+
+                    </form>
+
+                    <button
+                        id="back-btn"
+                        onClick={() => navigate('/')}
+                    >Back</button>
+
+                </div>
+            </div>
+        )
+    }
 }
 
-export default StarSystems;
+export default StarSystem;
