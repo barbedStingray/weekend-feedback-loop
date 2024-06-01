@@ -3,6 +3,19 @@ import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App/App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: Infinity,
+            cacheTime: Infinity
+        }
+    }
+});
+
+
 
 // REDUX Step 1. Import Provider, middleware, combinereducers, create store
 import { Provider } from 'react-redux';
@@ -142,9 +155,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Provider store={reduxStore}>
-                <App />
-            </Provider>
+            <QueryClientProvider client={queryClient}>
+                <Provider store={reduxStore}>
+                    <App />
+                </Provider>
+            </QueryClientProvider>
         </BrowserRouter>
     </React.StrictMode>
 );

@@ -7,7 +7,7 @@ const localCache = {};
 export default function useSetOperationalBases(planet) {
     const [operationalBases, setOperationalBases] = useState([]);
     const [baseStatus, setBaseStatus] = useState('unloaded');
-    console.log('localCache', localCache);
+    // console.log('localCache', localCache);
 
     useEffect(() => {
         if (!planet) {

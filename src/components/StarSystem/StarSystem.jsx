@@ -3,24 +3,47 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import { useQuery } from '@tanstack/react-query';
+import fetchBases from '../../scripts/fetchBases.js';
+
 // components
 import RadioButton from '../RadioButton/RadioButton.jsx';
 import useSetStarSystems from '../../scripts/useSetStarSystems.js';
 import useSetOperationalBases from '../../scripts/useSetOperationalBases.js';
-
+import useBases from '../../scripts/useBases.js';
+import useSystem from '../../scripts/useSystem.js';
 
 function StarSystem() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [baseLocation, setBaseLocation] = useState('');
-     
-    const [starSystem, setStarSystem] = useState(0);
-    const [starSystemList, status] = useSetStarSystems();
-    const [operationalBases, baseStatus] = useSetOperationalBases(starSystem); 
-    // console.log('starSystemList', starSystemList);
-    // console.log('operationalBases', operationalBases, baseStatus);
-    // console.log('star System', starSystem);
+
+    const [starSystem, setStarSystem] = useState(1);
+    // const [starSystemList, status] = useSetStarSystems();
+    // const [operationalBases, baseStatus] = useSetOperationalBases(starSystem);
+
+    // ! What is the difference between using the custom hook as the interim, and cutting to reactQuery?
+    // useQuery / fetchBases
+    // const { data: bases, isLoading, isError} = useQuery(['details', starSystem], fetchBases);
+    // console.log('bases, loading, error', bases, isLoading, isError);
+    // console.log('bases', bases);
+
+    // useQuery / Bases
+    const [bases, baseStatus] = useBases(starSystem);
+    // console.log('bases JSX', bases, baseStatus);
+
+    // useQuery / systems
+    const [system, systemStatus] = useSystem();
+    // console.log('system JSX', system, systemStatus);
+
+
+
+
+
+
+
+
 
 
     // continue button
@@ -34,7 +57,7 @@ function StarSystem() {
     }
 
 
-    if (status !== 'loaded') {
+    if (systemStatus !== 'success') {
         return (
             <div>
                 <p>Page Is Loading</p>
@@ -57,7 +80,7 @@ function StarSystem() {
                                 onChange={(e) => setStarSystem(e.target.value)}
                             >
                                 <option>Select One</option>
-                                {starSystemList[0].map((planet, i) =>
+                                {system.map((planet, i) =>
                                     <option key={planet.id} value={planet.id} >{planet.system}</option>)}
                             </select>
                         </div>
@@ -65,18 +88,27 @@ function StarSystem() {
                         <h3>Operational Base</h3>
 
                         <div className={starSystem}>
-                            {operationalBases.map((base, index) =>
-                                <div
-                                    id="base-div"
-                                    key={index}
-                                >
-                                    <RadioButton
-                                        value={base.base}
-                                        name='base-location'
-                                        status={setBaseLocation}
-                                    />
-                                </div>
+
+                            {!baseStatus ? (
+                                <></>
+                            ) : (
+                                <>
+                                    {bases.map((base, index) =>
+                                        <div
+                                            id="base-div"
+                                            key={index}
+                                        >
+                                            <RadioButton
+                                                value={base.base}
+                                                name='base-location'
+                                                status={setBaseLocation}
+                                            />
+                                        </div>
+                                    )}
+                                </>
                             )}
+
+
                         </div>
 
                         <div id="filler-div"></div>
